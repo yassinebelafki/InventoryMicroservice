@@ -1,10 +1,13 @@
 package com.inventorymicroservice.controller;
 
 
+import com.inventorymicroservice.dto.InventroyResponse;
 import com.inventorymicroservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -14,10 +17,10 @@ public class InventoryController {
     private final InventoryService inventoryService;
 
 
-    @GetMapping("{skuCode}")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public boolean inStock(@PathVariable("skuCode") String skuCode){
-            return inventoryService.isItemExist(skuCode);
+    public List<InventroyResponse> inStock(@RequestParam("skuCode") List<String> skuCodes){
+            return inventoryService.isItemsExist(skuCodes);
     }
 
 
