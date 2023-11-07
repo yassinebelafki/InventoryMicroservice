@@ -2,6 +2,7 @@ package com.inventorymicroservice.service;
 
 
 import com.inventorymicroservice.dto.InventroyResponse;
+import com.inventorymicroservice.model.InventoryTable;
 import com.inventorymicroservice.repository.InvetoryRepo;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.sql.ast.tree.from.StandardTableGroup;
@@ -32,8 +33,7 @@ public class InventoryService {
     }
 
 
-
-
-
-
+    public List<InventoryTable> getAllProduct() {
+        return invetoryRepo.findAll();
+    }
 }

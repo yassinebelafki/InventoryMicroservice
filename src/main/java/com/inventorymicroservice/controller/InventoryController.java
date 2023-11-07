@@ -2,6 +2,7 @@ package com.inventorymicroservice.controller;
 
 
 import com.inventorymicroservice.dto.InventroyResponse;
+import com.inventorymicroservice.model.InventoryTable;
 import com.inventorymicroservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,12 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.OK)
     public List<InventroyResponse> inStock(@RequestParam("skuCode") List<String> skuCodes){
             return inventoryService.isItemsExist(skuCodes);
+    }
+
+    @GetMapping("all")
+    @ResponseStatus(HttpStatus.OK)
+    public List<InventoryTable> AllStock(){
+        return inventoryService.getAllProduct();
     }
 
 
